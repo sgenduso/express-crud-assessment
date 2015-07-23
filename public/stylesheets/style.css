@@ -13,24 +13,25 @@ a {
   background-image: url('../images/main_header_bkrd.jpeg');
   /*text-align: center;*/
   height: 170px;
+  margin-bottom: 20px;
 }
 
 .header h1 {
-  vertical-align: middle;
+  /*vertical-align: middle;*/
   float: right;
 }
 
-.newArticle {
+.new-article, .edit-article {
   padding: 20px;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   background-color: #fff;
 }
 
-.newArticle h1 {
+.new-article h1, .edit-article h1 {
   border-bottom: solid #cccccc 1px;
 }
 
-.newArticle div {
+.new-article div, .edit-article div {
   margin-bottom: 15px;
 }
 
@@ -56,4 +57,39 @@ textarea {
 #bkrd-color + label {
   display: inline;
   margin-left: 5px;
+}
+
+.this-article-preview {
+  height: 170px;
+  border: solid white;
+}
+.this-header {
+  height: 40%;
+  border: solid blue;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.this-excerpt, .this-body {
+  height: 60%;
+  background-color: #fff;
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding: 20px;
+  border: solid green;
+}
+
+.this-article h2 {
+  display: inline;
+}
+
+.edit {
+  display: inline;
+  float: right;
+}
+
+.delete {
+  color: white;
+  background-color: red;
+  border: solid #920000 2px;
+
 }

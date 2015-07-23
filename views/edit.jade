@@ -1,5 +1,26 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.edit-article
+    h1 Edit Article
+    form(action='/articles/'+article._id+'/edit' method='post')
+      div
+        label(for='title') Title
+        input(type='text' id='title' name='title' value=article.title)
+      div
+        label(for='url') Background URL
+        input(type='text' id='url' name='url' value=article.url)
+      div
+        input(type='checkbox' id='bkrd-color' name='bkrd_color' checked = article.bkrd_color==='on')
+        label(for='bkrd-color') Background image has dark colors
+      div
+        label(for='excerpt') Excerpt
+        textarea(id='excerpt' name='excerpt')=article.excerpt
+      div
+        label(for='body') Body
+        textarea(id='body' name='body')=article.body
+      div
+        input(type='submit' value='Update Article')
+      form(action='/articles/'+article._id+'/delete' method='post')
+        div
+          input.delete(type='submit' value='Delete')

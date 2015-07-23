@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.this-article(style='background-image: url(article.url)')
+    div.this-header
+      h2=article.title
+      h2
+        a.edit(href='/articles/'+article._id+'/edit') Edit
+    div.this-body
+      =article.body

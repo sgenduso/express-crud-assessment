@@ -1,9 +1,12 @@
 extends layout
 
 block content
-  div.header
-    h1= title
   p
     a(href='/articles/new') Add New Article
-  p
-    a(href='articles') View All Articles
+  for article in articles
+    div.this-article-preview(style='background-image: url(article.url)')
+      div.this-header
+        h2
+          a(href='/articles/'+article._id)=article.title
+      div.this-excerpt
+        =article.excerpt
