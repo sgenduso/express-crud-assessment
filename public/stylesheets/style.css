@@ -1,8 +1,59 @@
+
 body {
-  padding: 50px;
+  padding: 0px 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('../images/congruent_outline.png');
 }
 
 a {
   color: #00B7FF;
+}
+
+.header {
+  background-image: url('../images/main_header_bkrd.jpeg');
+  /*text-align: center;*/
+  height: 170px;
+}
+
+.header h1 {
+  vertical-align: middle;
+  float: right;
+}
+
+.newArticle {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+.newArticle h1 {
+  border-bottom: solid #cccccc 1px;
+}
+
+.newArticle div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+}
+
+input[type='submit'], input[type='checkbox'] {
+  margin-left: 200px;
+}
+
+input[type='text'], textarea {
+  width: 60%;
+}
+
+textarea {
+  height: 100px;
+  border-color: #cccccc;
+}
+
+#bkrd-color + label {
+  display: inline;
+  margin-left: 5px;
 }

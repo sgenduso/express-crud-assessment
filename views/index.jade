@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.header
+    h1= title
+  p
+    a(href='/articles/new') Add New Article
+  p
+    a(href='articles') View All Articles

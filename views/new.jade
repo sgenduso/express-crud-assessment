@@ -1,5 +1,25 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.header
+    h1= title
+  div.newArticle
+    h1 New Article
+    form(action='/new' method='post')
+      div
+        label(for='title') Title
+        input(type='text' id='title' name='title')
+      div
+        label(for='url') Background URL
+        input(type='text' id='url' name='url')
+      div
+        input(type='checkbox' id='bkrd-color' name='bkrd_color')
+        label(for='bkrd-color') Background image has dark colors
+      div
+        label(for='excerpt') Excerpt
+        textarea(id='excerpt' name='excerpt')
+      div
+        label(for='body') Body
+        textarea(id='body' name='body')
+      div
+        input(type='submit' value='Add Article')
