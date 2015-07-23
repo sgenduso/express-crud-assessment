@@ -4,9 +4,12 @@ block content
   p
     a(href='/articles/new') Add New Article
   for article in articles
-    div.this-article-preview(style='background-image: url(article.url)')
+    div.this-article-preview
       div.this-header
+        //- img.bkrd-img(src=article.url)
         h2
           a(href='/articles/'+article._id)=article.title
       div.this-excerpt
         =article.excerpt
+
+//- (style='background-image: url('=article.url');')

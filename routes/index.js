@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('monk')(process.env.MONGOLAB_URI || process.env.ZINE_DB);
 var articles = db.get('articles');
+var validate = require('../lib/validate.js');
 
 router.get('/', function(req, res, next) {
   articles.find({}, function (err, articles) {
@@ -10,30 +11,50 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/articles/new', function (req, res, next) {
-  res.render('new', {title: 'The Zine'});
+  res.render('new');
 });
 
 router.post('/articles/new', function (req, res, next) {
+  var title = req.body.title;
+  var url = req.body.url;
+  var bkrdColor = req.body.bkrd_color;
+  var excerpt = req.body.excerpt;
+  var body = req.body.body;
+  var errors = validate.formValidate(title, excerpt, body);
+  if (errors.length!==0) {
+    res.render('new', {title: title, url: url, bkrd_color: bkrdColor, excerpt: excerpt, body: body, errors: errors});
+  } else {
   articles.insert(req.body);
     res.redirect('/');
+  }
 });
 
 router.get('/articles/:id', function (req, res, next) {
   articles.findOne({_id: req.params.id}, function (err, article) {
-    res.render('show', {title: 'The Zine', article: article});
+    res.render('show', {article: article});
   });
 });
 
 router.get('/articles/:id/edit', function (req, res, next) {
   articles.findOne({_id: req.params.id}, function (err, article) {
-    res.render('edit', {title: 'The Zine', article: article});
+    res.render('edit', {article: article});
   });
 });
 
 router.post('/articles/:id/edit', function (req, res, next) {
-  articles.update({_id: req.params.id}, req.body, function (err, article) {
-    res.redirect('/');
-  });
+  articles.findOne({_id: req.params.id}, function (err, article) {
+  var title = req.body.title;
+  var excerpt = req.body.excerpt;
+  var body = req.body.body;
+  var errors = validate.formValidate(title, excerpt, body);
+  if (errors.length!==0) {
+    res.render('edit', {article:article, errors: errors});
+  } else {
+    articles.update({_id: req.params.id}, req.body, function (err, article) {
+      res.redirect('/');
+    });
+  }
+});
 });
 
 router.post('/articles/:id/delete', function (req, res, next) {

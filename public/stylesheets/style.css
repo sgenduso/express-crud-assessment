@@ -17,8 +17,10 @@ a {
 }
 
 .header h1 {
-  /*vertical-align: middle;*/
+  vertical-align: middle;
+  display: inline-block;
   float: right;
+  margin-top: 62px;
 }
 
 .new-article, .edit-article {
@@ -68,6 +70,7 @@ textarea {
   border: solid blue;
   padding: 5px;
   box-sizing: border-box;
+  position: relative;
 }
 .this-excerpt, .this-body {
   height: 60%;
@@ -82,6 +85,13 @@ textarea {
   display: inline;
 }
 
+.bkrd-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .edit {
   display: inline;
   float: right;
@@ -91,5 +101,9 @@ textarea {
   color: white;
   background-color: red;
   border: solid #920000 2px;
+}
 
+.error {
+  color: red;
+  margin-left: 200px;
 }

@@ -3,6 +3,9 @@ extends layout
 block content
   div.edit-article
     h1 Edit Article
+    if errors
+      for error in errors
+        p.error=error
     form(action='/articles/'+article._id+'/edit' method='post')
       div
         label(for='title') Title
