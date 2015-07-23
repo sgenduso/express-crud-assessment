@@ -23,7 +23,7 @@ router.post('/articles/new', function (req, res, next) {
   var errors = validate.formValidate(title, excerpt, body);
   if (errors.length!==0) {
     errors.push('Please correct the errors below:');
-    res.render('new', {title: title, url: url, bkrd_color: bkrdColor, excerpt: excerpt, body: body, errors: errors});
+    res.render('new', {title: title, url: url, bkrd_color: bkrdColor, excerpt: excerpt, body: body, errors: errors.reverse()});
   } else {
   articles.insert(req.body);
     res.redirect('/');
@@ -50,7 +50,7 @@ router.post('/articles/:id/edit', function (req, res, next) {
   var errors = validate.formValidate(title, excerpt, body);
   if (errors.length!==0) {
     errors.push('Please correct the errors below:');
-    res.render('edit', {article:article, errors: errors});
+    res.render('edit', {article:article, errors: errors.reverse()});
   } else {
     articles.update({_id: req.params.id}, req.body, function (err, article) {
       res.redirect('/');
