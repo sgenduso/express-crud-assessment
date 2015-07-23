@@ -6,7 +6,7 @@ var validate = require('../lib/validate.js');
 
 router.get('/', function(req, res, next) {
   articles.find({}, function (err, articles) {
-    res.render('index', {title: 'The Zine', articles: articles});
+    res.render('index', {title: 'The Zine', articles: articles.reverse()});
   });
 });
 
@@ -22,6 +22,7 @@ router.post('/articles/new', function (req, res, next) {
   var body = req.body.body;
   var errors = validate.formValidate(title, excerpt, body);
   if (errors.length!==0) {
+    errors.push('Please correct the errors below:');
     res.render('new', {title: title, url: url, bkrd_color: bkrdColor, excerpt: excerpt, body: body, errors: errors});
   } else {
   articles.insert(req.body);
@@ -48,6 +49,7 @@ router.post('/articles/:id/edit', function (req, res, next) {
   var body = req.body.body;
   var errors = validate.formValidate(title, excerpt, body);
   if (errors.length!==0) {
+    errors.push('Please correct the errors below:');
     res.render('edit', {article:article, errors: errors});
   } else {
     articles.update({_id: req.params.id}, req.body, function (err, article) {

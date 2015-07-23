@@ -1,10 +1,12 @@
 extends layout
 
 block content
-  div.this-article(style='background-image: url(article.url)')
-    div.this-header
-      h2=article.title
-      h2
-        a.edit(href='/articles/'+article._id+'/edit') Edit
+  div.this-article
+    div.this-header(style= article.url==='' ? 'background-image: url('+'http://subtlepatterns.com/patterns/scribble_light.png'+')' : 'background-image: url('+article.url+')')
+      div.left
+        h2(class=article.bkrd_color==='on' ? 'dark' : 'light')=article.title
+      div.right
+        h2
+          a.edit(href='/articles/'+article._id+'/edit' class=article.bkrd_color==='on' ? 'dark' : 'light') Edit
     div.this-body
       =article.body

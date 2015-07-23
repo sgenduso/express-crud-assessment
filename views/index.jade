@@ -1,15 +1,12 @@
 extends layout
 
 block content
-  p
-    a(href='/articles/new') Add New Article
   for article in articles
     div.this-article-preview
-      div.this-header
-        //- img.bkrd-img(src=article.url)
+      div.this-header(style= article.url==='' ? 'background-image: url('+'http://subtlepatterns.com/patterns/scribble_light.png'+')' : 'background-image: url('+article.url+')')
         h2
-          a(href='/articles/'+article._id)=article.title
+          a(href='/articles/'+article._id class=article.bkrd_color==='on' ? 'dark' : 'light')=article.title
       div.this-excerpt
         =article.excerpt
-
-//- (style='background-image: url('=article.url');')
+  p
+    a(href='/articles/new') Add New Article
