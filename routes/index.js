@@ -32,6 +32,7 @@ router.post('/articles/new', function (req, res, next) {
 
 router.get('/articles/:id', function (req, res, next) {
   articles.findOne({_id: req.params.id}, function (err, article) {
+    article.body = article.body.split('\n');
     res.render('show', {article: article});
   });
 });
