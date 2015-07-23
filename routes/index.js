@@ -44,20 +44,21 @@ router.get('/articles/:id/edit', function (req, res, next) {
 });
 
 router.post('/articles/:id/edit', function (req, res, next) {
-  articles.findOne({_id: req.params.id}, function (err, article) {
-  var title = req.body.title;
-  var excerpt = req.body.excerpt;
-  var body = req.body.body;
-  var errors = validate.formValidate(title, excerpt, body);
+    var title = req.body.title;
+    var url = req.body.url;
+    var bkrdColor = req.body.bkrd_color;
+    var excerpt = req.body.excerpt;
+    var body = req.body.body;
+    var errors = validate.formValidate(title, excerpt, body);
   if (errors.length!==0) {
     errors.push('Please correct the errors below:');
+    var article = {title: title, url: url, bkrd_color: bkrdColor, excerpt: excerpt, body: body};
     res.render('edit', {article:article, errors: errors.reverse()});
   } else {
     articles.update({_id: req.params.id}, req.body, function (err, article) {
       res.redirect('/');
     });
   }
-});
 });
 
 router.post('/articles/:id/delete', function (req, res, next) {

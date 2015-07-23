@@ -9,7 +9,7 @@ block content
     form(action='/articles/'+article._id+'/edit' method='post')
       div
         label(for='title') Title
-        input(type='text' id='title' name='title' value=article.title)
+        input(type='text' id='title' name='title' value= title ? title : article.title)
       div
         label(for='url') Background URL
         input(type='text' id='url' name='url' value=article.url)
