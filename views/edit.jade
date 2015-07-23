@@ -24,6 +24,6 @@ block content
         textarea(id='body' name='body')=article.body
       div
         input(type='submit' value='Update Article')
-      form(action='/articles/'+article._id+'/delete' method='post')
-        div
-          input.delete(type='submit' value='Delete')
+    form(action='/articles/'+article._id+'/delete' method='post')
+      div
+        input.delete(type='submit' value='Delete')

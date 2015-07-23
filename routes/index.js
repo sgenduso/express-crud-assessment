@@ -61,7 +61,7 @@ router.post('/articles/:id/edit', function (req, res, next) {
 });
 
 router.post('/articles/:id/delete', function (req, res, next) {
-  articles.remove({_id: req.params.id}, function (err, article) {
+  articles.remove({_id: req.params.id}, function (err, record) {
     res.redirect('/');
   });
 });
